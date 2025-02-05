@@ -1,0 +1,29 @@
+name: Run Tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      TAG:
+        description: "Type which test tag you want to run"
+        required: false
+        default: "@test"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3 # Gets the code from the repo
+
+      - name: Build Docker Image
+        run: |
+          docker build -t playwrighttemplate .
+
+      - name: List Docker Images (Debugging)
+        run: |
+          docker images  # Check if the image was built
+
+      - name: Run Container and Execute Tests
+        run: |
+          docker run --rm playwrighttemplate
