@@ -1,5 +1,5 @@
 # Use the official Node.js image as a base
-FROM mcr.microsoft.com/playwright:v1.49.1-noble
+FROM mcr.microsoft.com/playwright:v1.50.1-noble
 
 # Set the working directory in the container
 WORKDIR /app
